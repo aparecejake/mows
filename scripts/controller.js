@@ -1,17 +1,33 @@
 // basic functionalities
-client = mqtt.connect("ws://broker.hivemq.com:8000/mqtt")
-client.subscribe("mqtt/demo")
+var btnConnect = document.getElementById('btn-connect');
+var btnPublish = document.getElementById('btn-publish');
+var btnDisconnect = document.getElementById('btn-disconnect');
 
-client.on("connect", function(){
-    console.log("Successfully connected");
+btnConnect.addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log("connect btn");
+  document.getElementById("status").innerHTML = 'Connected';
+
+  client = mqtt.connect("ws://broker.hivemq.com:8000/mqtt")//broker address
+  client.subscribe("mqtt/demo")//subscribe
+
+  client.on("connect", function () {
+    console.log("Successfully connected");//triggered
+  })
+
+  client.on("message", function (topic, payload) {//mo execute if naay message
+    console.log([topic, payload].join(": "));//receiving messagw
+    client.end();//disconnect
+  })
+
+  client.publish("mqtt/demo", "hello world!")//execute
+
 })
-
-client.on("message", function (topic, payload) {
-  console.log([topic, payload].join(": "));
-  client.end();
+btnDisconnect.addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log("Connection Closed")
+  document.getElementById("status").innerHTML = 'Disconnected';
 })
-
-client.publish("mqtt/demo", "hello world!")
 
 // // advance functionalities
 // client = mqtt.connect("ws://broker.hivemq.com:8000/mqtt")
@@ -39,3 +55,4 @@ client.publish("mqtt/demo", "hello world!")
 //     console.log("published")
 //   }
 // })
+
