@@ -1,18 +1,14 @@
-// basic functionalities
-var btnConnect = document.getElementById('btn-connect');
-var btnPublish = document.getElementById('btn-publish');
-var btnDisconnect = document.getElementById('btn-disconnect');
+// var btnConnect = $('#btn-connect');
+// var btnPublish = $('btn-publish');
+// var btnDisconnect = $('.btn-disconnect');
 
-btnConnect.addEventListener('click', function (e) {
-  e.preventDefault();
+$('#btn-connect').click(function () {
   console.log("connect btn");
-  document.getElementById("status").innerHTML = 'Connected';
-
-  client = mqtt.connect("ws://broker.hivemq.com:8000/mqtt")//broker address
-  client.subscribe("mqtt/demo")//subscribe
+  $("#status").text('Connecting...');
+  client = mqtt.connect($("#name").val())//broker address
 
   client.on("connect", function () {
-    console.log("Successfully connected");//triggered
+    $("#status").text('Connected');
   })
 
   client.on("message", function (topic, payload) {//mo execute if naay message
@@ -20,14 +16,45 @@ btnConnect.addEventListener('click', function (e) {
     client.end();//disconnect
   })
 
-  client.publish("mqtt/demo", "hello world!")//execute
+$("#btn-publish").click(function(){
+  client.publish($("#topic").val(), $("#payload").val())//execute
+  client.subscribe($("#topic").val())//subscribe
 
 })
-btnDisconnect.addEventListener('click', function (e) {
-  e.preventDefault();
-  console.log("Connection Closed")
-  document.getElementById("status").innerHTML = 'Disconnected';
+  $('#btn-disconnect').click(function (e) {
+   client.end()
+    $("#status").text("Disconnected");
+  })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // advance functionalities
 // client = mqtt.connect("ws://broker.hivemq.com:8000/mqtt")
