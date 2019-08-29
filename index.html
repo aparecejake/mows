@@ -45,6 +45,9 @@
                   <th scope="col">
                     <h6>Payload</h6>
                   </th>
+                  <th scope="col">
+                    <h6>Timestamp</h6>
+                  </th>
                 </tr>
               </thead>
               <tbody class="text-center">
@@ -66,7 +69,9 @@
             <label class="bmd-label-static">Payload</label>
             <input type="text" class="form-control" id="payload">
             <br>
+            <center>
             <button id="btn-publish" class="save-btn btn btn-raised btn-danger">Publish</button>
+          </center>
           </div>
         </div>
       </div>
@@ -78,9 +83,11 @@
           <div class="form-group">
             <label class="bmd-label-static">Topic</label>
             <input type="text" class="form-control" id="name">
-            <br>
+            <br><br><br><br><br>
+            <center>
             <button id="btn-subscribe" class="btn-save save-btn btn btn-raised btn-success">Subscribe</button>
             <button id="btn-unsubscribe" class="save-btn btn btn-raised btn-danger">Unsubscribe</button>
+          </center>
           </div>
         </div>
 </body>
