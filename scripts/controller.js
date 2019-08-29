@@ -1,7 +1,3 @@
-// var btnConnect = $('#btn-connect');
-// var btnPublish = $('btn-publish');
-// var btnDisconnect = $('.btn-disconnect');
-// var timestamp= null;
 $('#btn-connect').click(function () {
   console.log("connected");
   $("#status").text('Connecting...');
@@ -22,32 +18,28 @@ $('#btn-connect').click(function () {
       // timestamp = moment().format('MMMM D YYYY , h:mm:ss a')
     }
     // client.publish($("#topic").val(), $("#payload").val())
-    client.subscribe($("#topic").val())
+    $('#btn-subscribe').click(function (e) {
+      client.subscribe($("#topic").val())
+    })
+    $('#btn-unsubscribe').click(function (e) {
+      client.unsubscribe($("#topic").val())
+    })
 
   })
   $('#btn-disconnect').click(function (e) {
     client.end()
     $("#status").text("Disconnected");
   })
-  // $("#btn-subscribe").click(function () {
-  //   var topics = $("#topics").val();
-  //   if (topics == "") {
-  //     alert("Please add a topic")
-  //   } else {
-  //     client.subscribe(topics);
-  //   }
-  // });
-  
-
   client.on("message", function (topic, payload) {
     var tr = $("<tr>")
+    var timestamp = moment().format('MMMM D YYYY , h:mm:ss a')
     $("<td>").text(topic).appendTo($(tr))
     $("<td>").text(payload).appendTo($(tr))
-    //  $("<td>").text(timestamp).appendTo($(tr))
+     $("<td>").text(timestamp).appendTo($(tr))
     $("tbody").append($(tr))
-    console.log($(tr).html())
-    console.log([topic, payload].join(": "));
-    // client.end();
+    // console.log($(tr).html())
+    // console.log([topic, payload].join(": "));
+  
   })
 })
 

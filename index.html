@@ -7,12 +7,32 @@
   <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
     integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
-  <title>mows</title>
+    <title>mowsmows</title>
+
+<style>
+  body{
+    background-image: url("https://www.itic.org/dotAsset/bb16ba6f-2265-43e0-ab25-bbef96984ddb.jpg");
+    border-image-repeat: no-repeat;
+    background-size: cover;
+  }
+  .btn{
+    border-radius: 20px;
+  }
+  td{
+    background-color: #fff;
+  }
+  h1,p{
+    color: #fff;
+  }
+</style>
 </head>
 
 <body>
-  <!-- <h1>MQTT</h1>
-  <p>My MQTT Web App</p> -->
+  <center>
+      <h1>MQTT</h1>
+      <p>My MQTT Web App</p>
+  </center>
+  
   <br>
   <div class="row">
     <div class="col-md-4">
@@ -21,11 +41,11 @@
           <h5 class="card-header mb-3 white-text text-center py-4"><strong>BROKER</strong></h5>
           <div class="form-group">
             <label class="bmd-label-static">Address</label>
-            <input type="text" class="form-control" value = "ws://broker.hivemq.com:8000/mqtt" id="name">
+            <input type="text" class="form-control" value="ws://broker.hivemq.com:8000/mqtt" id="name">
             <br>
             <center>
-              <button id="btn-connect" class="btn-save save-btn btn btn-raised btn-success">Connect</button>
-              <button id="btn-disconnect" class="save-btn btn btn-raised btn-danger">Disconnect</button>
+              <button id="btn-connect" class=" btn btn-raised btn-success">Connect</button>
+              <button id="btn-disconnect" class=" btn btn-raised btn-danger">Disconnect</button>
             </center>
           </div>
           <div class="form-group alert alert-success">
@@ -34,27 +54,7 @@
           </div>
         </div>
         <br>
-        <div class="row class-list">
-          <div class="container ">
-            <table class="table table-bordered ">
-              <thead class="bg-info">
-                <tr class=" text-center">
-                  <th scope="col">
-                    <h6>Topic</h6>
-                  </th>
-                  <th scope="col">
-                    <h6>Payload</h6>
-                  </th>
-                  <th scope="col">
-                    <h6>Timestamp</h6>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-              </tbody>
-            </table>
-          </div>
-        </div>
+
       </div>
     </div>
     <div class="col-md-4">
@@ -70,8 +70,8 @@
             <input type="text" class="form-control" id="payload">
             <br>
             <center>
-            <button id="btn-publish" class="save-btn btn btn-raised btn-danger">Publish</button>
-          </center>
+              <button id="btn-publish" class=" btn btn-raised btn-danger">Publish</button>
+            </center>
           </div>
         </div>
       </div>
@@ -83,14 +83,42 @@
           <div class="form-group">
             <label class="bmd-label-static">Topic</label>
             <input type="text" class="form-control" id="name">
-            <br><br><br><br><br>
+            <br><br><br><br>
             <center>
-            <button id="btn-subscribe" class="btn-save save-btn btn btn-raised btn-success">Subscribe</button>
-            <button id="btn-unsubscribe" class="save-btn btn btn-raised btn-danger">Unsubscribe</button>
-          </center>
+              <button id="btn-subscribe" class=" btn btn-raised btn-success">Subscribe</button>
+              <button id="btn-unsubscribe" class="btn btn-raised btn-danger">Unsubscribe</button>
+            </center>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <br><hr>
+        <div class="row class-list">
+          <div class="col-md-12">
+            <div class="container ">
+              <table class="table table-bordered ">
+                <thead class="bg-info">
+                  <tr class=" text-center">
+                    <th scope="col">
+                      <h6>Topic</h6>
+                    </th>
+                    <th scope="col">
+                      <h6>Payload</h6>
+                    </th>
+                    <th scope="col">
+                      <h6>Timestamp</h6>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="scripts/browserMqtt.js"></script>
 <script src="scripts/controller.js"></script>
 
