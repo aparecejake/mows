@@ -1,6 +1,6 @@
 $('#btn-connect').click(function () {
-  console.log("connected");
   $("#status").text('Connecting...');
+  console.log("connected");
   client = mqtt.connect($("#name").val())
   client.on("connect", function () {
     $("#status").text('Connected');
@@ -15,14 +15,16 @@ $('#btn-connect').click(function () {
       alert("Please add a topic or/and payload")
     } else {
       client.publish(topic, payload)
-      // timestamp = moment().format('MMMM D YYYY , h:mm:ss a')
     }
-    // client.publish($("#topic").val(), $("#payload").val())
     $('#btn-subscribe').click(function (e) {
       client.subscribe($("#topic").val())
+      $("#substatus").text('Subscribed');
     })
     $('#btn-unsubscribe').click(function (e) {
       client.unsubscribe($("#topic").val())
+      $("#substatus").text('Unsubscribed');
+
+     
     })
 
   })
@@ -35,11 +37,10 @@ $('#btn-connect').click(function () {
     var timestamp = moment().format('MMMM D YYYY , h:mm:ss a')
     $("<td>").text(topic).appendTo($(tr))
     $("<td>").text(payload).appendTo($(tr))
-     $("<td>").text(timestamp).appendTo($(tr))
+    $("<td>").text(timestamp).appendTo($(tr))
     $("tbody").append($(tr))
-    // console.log($(tr).html())
-    // console.log([topic, payload].join(": "));
-  
+    
+
   })
 })
 

@@ -21,16 +21,17 @@
   td{
     background-color: #fff;
   }
-  h1,p{
+  h1,h2{
     color: #fff;
   }
 </style>
 </head>
 
 <body>
+  <br>
   <center>
-      <h1>MQTT</h1>
-      <p>My MQTT Web App</p>
+      <h1>Message Queuing Telemetry Transport</h1>
+      <h2>My MQTT Web App</h2>
   </center>
   
   <br>
@@ -41,8 +42,10 @@
           <h5 class="card-header mb-3 white-text text-center py-4"><strong>BROKER</strong></h5>
           <div class="form-group">
             <label class="bmd-label-static">Address</label>
-            <input type="text" class="form-control" value="ws://broker.hivemq.com:8000/mqtt" id="name">
+            <input type="text" class="form-control"  id="name">
             <br>
+            <!-- value="wss://test.mosquitto.org:8081/mqtt" -->
+            <!-- ws://broker.hivemq.com:8000/mqtt -->
             <center>
               <button id="btn-connect" class=" btn btn-raised btn-success">Connect</button>
               <button id="btn-disconnect" class=" btn btn-raised btn-danger">Disconnect</button>
@@ -83,7 +86,11 @@
           <div class="form-group">
             <label class="bmd-label-static">Topic</label>
             <input type="text" class="form-control" id="name">
-            <br><br><br><br>
+           <br>
+            <div class="form-group alert alert-success">
+                <label class="bmd-label-static">Status</label>
+                <p type="text" class="text-center" id="substatus"></p>
+              </div>
             <center>
               <button id="btn-subscribe" class=" btn btn-raised btn-success">Subscribe</button>
               <button id="btn-unsubscribe" class="btn btn-raised btn-danger">Unsubscribe</button>
